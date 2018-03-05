@@ -1,5 +1,8 @@
 {
   "name": "images-firebase",
-  "app_id": "",
-  "type": "ionic-angular"
+  "app_id": "b8169f17",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+      <ion-title>Selamat Datang</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="goToProfile()">
+            <ion-icon name="person"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="logout()">
+            <ion-icon name="power"></ion-icon>
+          </button>
+        </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <button ion-button color="danger" full (click)="lapor()">
+    Buat Laporan
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+  <ion-card>
+      <ion-card-header>
+          <div text-center>
+              <h2> Laporan Kejadian </h2>
+              </div>
+         </ion-card-header>  
+         
+         <!-- <ion-item *ngFor="let item of pengguna | async"> -->
+         <ion-item *ngFor="let item of data | async">
+            <!-- <ion-item *ngIf="userProfile?.firstName ||
+            userProfile?.lastName">
+            <h3  align="right" ion-text color="danger"> {{item.katlaporan}}</h3> 
+            <h2>{{userProfile?.firstName}} {{userProfile?.lastName}}</h2>  -->
+            <h3  align="right" ion-text color="danger"> {{item.katlaporan}}</h3>
+            <h2>{{item.nama}}</h2>
+            <!-- <h2>{{item.firstName}} {{item.lastName}} </h2> -->
+            <p>{{item.waktu}} -    {{item.lokasi}} </p>
+            <div hidden="hidden">{{item.$id}} Oleh :    {{ item.image }} </div>
+            <ion-card-content>
+                {{item.laporan}}
+            </ion-card-content>
+            <!-- <ion-item *ngFor="let pic of photoList" > -->
+              <img src="https://firebasestorage.googleapis.com/v0/b/images-firebase-cf815.appspot.com/o/images%2F{{ item.image }}.jpg?alt=media&token=">
+             <!-- </ion-item> -->
+             <button ion-button block round outline color="light" full default (click)="lokasi()">Lihat Lokasi</button>
+            </ion-item>
+    </ion-card>
+
+</ion-content>

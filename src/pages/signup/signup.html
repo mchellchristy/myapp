@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="primary">
+  <ion-title>
+  Daftar Akun Baru
+  </ion-title>
+  </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+      <ion-item no-lines>
+          <ion-avatar class="foto">
+          <img src="assets/gambar/logo6.png">
+          </ion-avatar>
+        </ion-item>
+  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+  <ion-item>
+  <ion-label stacked>Email</ion-label>
+  <ion-input formControlName="email" type="email"
+  placeholder="Alamat email Anda"
+  [class.invalid]="!signupForm.controls.email.valid &&
+  signupForm.controls.email.dirty">
+  </ion-input>
+  </ion-item>
+  <ion-item class="error-message"
+  *ngIf="!signupForm.controls.email.valid &&
+  signupForm.controls.email.dirty">
+  <p>Mohon masukkan alamat email yang benar</p>
+  </ion-item>
+  <ion-item>
+  <ion-label stacked>Password</ion-label>
+  <ion-input formControlName="password" type="password"
+  placeholder="Kata Sandi"
+  [class.invalid]="!signupForm.controls.password.valid &&
+  signupForm.controls.password.dirty">
+  </ion-input>
+  </ion-item>
+  <ion-item class="error-message"
+  *ngIf="!signupForm.controls.password.valid &&
+  signupForm.controls.password.dirty">
+  <p>Kata Sandi memerlukan 6 karakter</p>
+  </ion-item>
+  <button ion-button block type="submit" [disabled]="!signupForm.valid">
+  Daftar 
+</button>
+</form>
+</ion-content>
+
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+    
+    
+    
+    </ion-header>
+    
+    
+    <ion-content class="background">
+      <ion-card>
+        <ion-card-header>
+          Signup
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-input type="email" placeholder="Email" [(ngModel)]="newuser.email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="password" placeholder="Password" [(ngModel)]="newuser.password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" placeholder="Nick Name" [(ngModel)]="newuser.displayName"></ion-input>
+            </ion-item>
+            <button ion-button block round outline color="light" (click)="signup()">Sign Up</button>
+            <button ion-button full clear color="light" (click)="goback()">Go Back</button>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+     -->

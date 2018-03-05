@@ -1,14 +1,127 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+     Ayo Lapor Sekarang!
     </ion-title>
+    
+    <ion-buttons end>
+    <button ion-button icon-only (click)="beranda()">
+        <ion-icon name="home"></ion-icon>
+    </button>
+    <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="power"></ion-icon>
+    </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+    <button ion-button color="danger" outline full large>
+      <ion-item>
+        <ion-label>Kategori Laporan</ion-label>
+          <ion-select [(ngModel)]="katlaporan">
+              <ion-option color="danger" value="Kemacetan Lalu Lintas">Kemacetan Lalu Lintas</ion-option>
+              <ion-option color="danger" value="Cuaca Buruk">Cuaca Buruk</ion-option>
+              <ion-option color="danger" value="Bencana">Bencana</ion-option>
+              <ion-option color="danger" value="Kecelakaan">Kecelakaan</ion-option>
+              <ion-option color="danger" value="Penutupan Jalan">Penutupan Jalan</ion-option>
+          </ion-select>
+        </ion-item>
+      </button>
+    
+
+  
+  <button ion-button color="danger" outline full large>
+      <ion-item>
+      <ion-item *ngIf="userProfile?.firstName || userProfile?.lastName"></ion-item>
+    
+      <ion-label>Nama Pelapor</ion-label>
+    <ion-select [(ngModel)]="nama">
+        <ion-option color="danger" value="{{userProfile?.firstName}} {{userProfile?.lastName}}">{{userProfile?.firstName}} {{userProfile?.lastName}}</ion-option>
+  <!-- <ion-item *ngIf="userProfile?.firstName || userProfile?.lastName">
+  <ion-input [(ngModel)]="nama" placeholder="{{userProfile?.firstName}} {{userProfile?.lastName}}"> {{userProfile?.firstName}} {{userProfile?.lastName}}" </ion-input>
+  </ion-item> 
+  <ion-icon name="md-create"></ion-icon> -->
+</ion-select>
+</ion-item>
+  </button>
+
+<ion-item>
+  <button ion-button color="danger" outline full large>
+  <ion-item>
+    <ion-input [(ngModel)]="laporan" placeholder="Deskripsi Kejadian"></ion-input>
+  </ion-item>
+  <ion-icon name="md-create"></ion-icon>
+  </button>
+</ion-item>
+
+<ion-item>
+  <ion-row>
+    <ion-col width-50>
+      <button ion-button color="danger" type="button" full large (click)="takePhoto()">
+        <ion-icon name="md-camera"></ion-icon>
+      </button>
+    </ion-col>
+
+    <ion-col width-50>
+      <button ion-button color="danger" type="button" full large (click)="selectPhoto()">
+        <ion-icon name="md-image"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <img src="{{currentImage}}"/>
+  <!-- <img [src]="base64Image" *ngIf="base64Image" /> -->
+  </ion-item>
+
+  <ion-row>
+    <ion-col width-50>
+      <button ion-button color="danger" type="button" full large >
+        <ion-item>
+          <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="tgl"></ion-datetime>
+        </ion-item>
+        <!-- <ion-icon name="md-calender"></ion-icon> -->
+      </button>     
+    </ion-col>
+
+    <ion-col width-50>
+      <button ion-button color="danger" type="button" full large >
+        <ion-item>
+           <ion-datetime displayFormat="HH:mm" [(ngModel)]="jam"></ion-datetime>
+        </ion-item>
+        <!-- <ion-icon name="md-time"></ion-icon> -->
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-item>
+
+<ion-item>
+<button ion-button color="danger" outline full large>
+    <ion-item>
+        <ion-input [(ngModel)]="lokasi" placeholder="Tempat"></ion-input>
+    </ion-item>
+<ion-icon name="md-pin"></ion-icon>
+</button>
+</ion-item>
+
+<!-- <button ion-button icon-right color="danger" clear>
+    <ion-icon name="md-pin"></ion-icon>
+    <ion-item>
+        <ion-input [(ngModel)]="lokasi" placeholder="Tempat"></ion-input>
+    </ion-item>
+</button> -->
+
+<!-- <ion-item>
+  <ion-input [(ngModel)]="lokasi" placeholder="Tempat"></ion-input>
+  <ion-icon name="md-pin"></ion-icon>
+</ion-item> -->
+
+<div id="map" #map></div>
+<button ion-button color="danger" full (click)="getLocation()">Lokasi Saat Ini</button>
+
+<button ion-button full large (click)="btnAddClicked(); addItem(laporan, nama, tgl, jam, waktu, lokasi, lat, long, katlaporan); ">Simpan</button>
+
 </ion-content>

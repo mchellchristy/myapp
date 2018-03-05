@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar color="primary">
+  <ion-title>Profil Pengguna</ion-title>
+  </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+  <ion-list>
+  <ion-list-header>
+  Informasi Pengguna
+  </ion-list-header>
+  <div text-center>
+      <button ion-button icon-only (click)="fotoProfil()">
+        <ion-icon name="md-image"></ion-icon>
+       Tambah Foto Profil
+      </button>
+    </div>
+    <ion-item>
+      <p>{{currentImage}}</p>
+    </ion-item>
+    <ion-item>
+      <img src="{{currentImage}}"/>
+    </ion-item>
+    
+  <ion-item (click)="updateName()">
+  <ion-grid>
+  <ion-row>
+  <ion-col col-6>
+  Nama
+  </ion-col>
+  <ion-col col-6 *ngIf="userProfile?.firstName ||
+  userProfile?.lastName">
+  {{userProfile?.firstName}} {{userProfile?.lastName}}
+  </ion-col>
+  <ion-col col-6 class="placeholder-profile"
+  *ngIf="!userProfile?.firstName">
+  <span>
+  Ketuk di sini untuk mengedit.
+  </span>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-item>
+  <ion-item>
+  <ion-label class="dob-label">Tanggal Lahir</ion-label>
+  <ion-datetime displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY"
+  [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)">
+  </ion-datetime>
+  </ion-item>
+  <ion-item (click)="updateEmail()">
+  <ion-grid>
+  <ion-row>
+  <ion-col col-6>
+  Email
+  </ion-col>
+  <ion-col col-6 *ngIf="userProfile?.email">
+  {{userProfile?.email}}
+  </ion-col>
+  <ion-col col-6 class="placeholder-profile"
+  *ngIf="!userProfile?.email">
+  <span>
+  Ketuk di sini untuk mengedit.
+  </span>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-item>
+  <ion-item (click)="updatePassword()">
+  <ion-grid>
+  <ion-row>
+  <ion-col col-6>
+  Password
+  </ion-col>
+  <ion-col col-6 class="placeholder-profile">
+  <span>
+  Ketuk di sini untuk mengedit.
+  </span>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-item>
+  </ion-list>
+  <!-- <button ion-button full large (click)="addPengItem(firstName, lastName);">Simpan</button> -->
+  </ion-content>
+  
+
+
+   <!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+    
+      <ion-navbar color="hcolor">
+        <ion-title>Profile</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content>
+    <div class="profile-image" (click)="editimage()">
+      <img src="{{avatar}}">
+    </div>
+    <div>
+      <h2 (click)="editname()">{{displayName}}</h2>
+    </div>
+    <div>
+      Tap on your pic or nick name to change it.
+    </div>
+    <div class="spacer" style="height: 10px;"></div>
+    <div>
+      <button ion-button round outline color="danger" (click)="logout()">Logout</button>
+    </div>
+    </ion-content>
+     -->
